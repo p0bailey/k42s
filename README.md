@@ -78,6 +78,10 @@ OS X & Linux:
 
 `make bootstrap`
 
+At the end of the cluster bootstrap you must get this output showing 1 master and 2 worker nodes along with several pods.
+
+<img src=".img/status.png" alt="Kubernetes" width="600"/>
+
 At the end to the bootstrap a KUBECONFIG can be found in the repo root directory, at this point you would need to set KUBECONFIG as an environment variable.
 
 To get the full path of KUBECONFIG and the environment variable values type and use it to set your favourite shell ie. .zshrc , .bashrc  
