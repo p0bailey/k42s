@@ -1,0 +1,10 @@
+[masters]
+master ansible_host=192.168.56.10 ansible_user=vagrant ansible_ssh_private_key_file=~/.vagrant.d/insecure_private_key
+
+[nodes]
+node1 ansible_host=192.168.56.11 ansible_user=vagrant ansible_ssh_private_key_file=~/.vagrant.d/insecure_private_key
+node2 ansible_host=192.168.56.12 ansible_user=vagrant ansible_ssh_private_key_file=~/.vagrant.d/insecure_private_key
+#node3 ansible_host=192.168.56.13 ansible_user=vagrant ansible_ssh_private_key_file=~/.vagrant.d/insecure_private_key
+
+[all:vars]
+ansible_python_interpreter=/usr/bin/python3
