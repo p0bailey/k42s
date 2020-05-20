@@ -10,7 +10,7 @@
 ## Why “k42s”?
 
 This project is the result of getting my hands dirty with Kubernetes trying to fulfil my innate curiosity to
-understand how things work. In the beginning I have started poking around with Minikube, which at that
+understand how things work in the nitty-gritty details. In the beginning I have started poking around with Minikube, which at that
 time was quite convenient to run my experiments and demos. However, moving forward I have realised that
 to have a holistic understanding of Kubernetes ecosystem I had to play with something near running it
 in a real multinode production cluster where would possible to experiment with  network policies, load balancers,
