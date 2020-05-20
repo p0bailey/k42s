@@ -89,10 +89,27 @@ To get the full path of KUBECONFIG and the environment variable values type and 
 `K8CONFIG=$(realpath .admin.conf) | echo export KUBECONFIG=$K8CONFIG`
 
 
+### Hello world
+
+`helm upgrade --install  -f kubernetes/helm/charts/helloworld/values.yaml helloworld ./kubernetes/helm/charts/helloworld`
+
+```
+Release "helloworld" has been upgraded. Happy Helming!
+NAME: helloworld
+LAST DEPLOYED: Wed May 20 09:03:17 2020
+NAMESPACE: default
+STATUS: deployed
+REVISION: 2
+NOTES:
+1. Get the application URL by running these commands:
+  http://helloworld-192-168-56-240.nip.io/
+```
+
+<img src=".img/helloworld.png" alt="Kubernetes" width="600"/>
 
 Useful commands:
 
-`./kubectl get pods --all-namespaces`
+`kubectl get pods --all-namespaces`
 
 **Advanced:**
 

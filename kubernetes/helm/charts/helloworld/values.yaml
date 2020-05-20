@@ -47,7 +47,7 @@ ingress:
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
-    - host: app-192-168-56-240.nip.io #mysite.192.168.56.240.sslip.io #foo.bar.lan #192.168.56.240.nip.io
+    - host: helloworld-192-168-56-240.nip.io
       paths: 
       - /
   tls: []
