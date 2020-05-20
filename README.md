@@ -74,7 +74,19 @@ OS X & Linux:
 
 **Quickstart:**
 
+Make sure you add these StrictHostKeyChecking to your ~/.ssh/config otherwise Ansible likely to fail.
+
+```
+Host 192.168.56.*
+   StrictHostKeyChecking no
+   UserKnownHostsFile=/dev/null
+```   
+
+Clone the repo.
+
 `git clone git@github.com:p0bailey/k42s.git`
+
+Cd into k42s and issue.
 
 `make bootstrap`
 
