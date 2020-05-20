@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-k9s --kubeconfig .admin.conf

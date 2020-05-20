@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-kubectl --kubeconfig .admin.conf "$@" 
