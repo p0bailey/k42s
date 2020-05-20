@@ -2,7 +2,7 @@
 # k42s
 <a id="markdown-k42s" name="k42s"></a>
 
->k42s is a Multinode Kubernetes Vagrant stack with a real load balancer.
+>k42s is a full multinode Kubernetes Vagrant stack with a real load balancer.
 
 ## <img src=".img/architecture.png" alt="Kubernetes" width="600"/>
 <a id="markdown-%3Cimg%20src%3D%22.img%2Farchitecture.png%22%20alt%3D%22Kubernetes%22%20width%3D%22600%22%2F%3E" name="%3Cimg%20src%3D%22.img%2Farchitecture.png%22%20alt%3D%22Kubernetes%22%20width%3D%22600%22%2F%3E"></a>
