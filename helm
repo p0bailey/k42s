@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+helm --kubeconfig='.admin.conf' "$@"

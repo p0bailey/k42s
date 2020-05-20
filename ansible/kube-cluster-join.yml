@@ -1,0 +1,13 @@
+---
+
+- name: Join Kubernetes cluster
+  hosts: all
+  become: yes
+  vars_files: vars.yml
+
+  environment:
+   PATH: "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+  roles:
+    - role: system
+    - role: nodes

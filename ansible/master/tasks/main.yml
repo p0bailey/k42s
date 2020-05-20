@@ -1,0 +1,45 @@
+#--ignore-preflight-errors=all  --kubernetes-version "1.15.4"
+---
+- name: Initialing Kubernetes cluster Weave Network
+  shell: |
+      kubeadm init --ignore-preflight-errors=all --apiserver-advertise-address "{{ hostvars[groups['masters'][0]].ansible_host }}"   --pod-network-cidr="10.4.0.0/16"
+      >> cluster_up.txt
+  args:
+    chdir: $HOME
+    creates: cluster_initialized.txt
+  when: pod_network == "weave"
+  register: net
+
+- name: Create .kube directory
+  file:
+    path: /root/.kube/
+    state: directory
+    mode: 0755
+
+- name: Copy admin.conf to user's kube config
+  copy:
+    src: /etc/kubernetes/admin.conf
+    dest: /root/.kube/config
+    remote_src: yes
+
+- name: Update network kernel settings
+  sysctl:
+    name: net.bridge.bridge-nf-call-iptables
+    value: 1
+    sysctl_set: yes
+    state: present
+    reload: yes
+  when: pod_network == "weave"
+
+- name: Install Weave Pod network
+  shell: kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"  >>  pod_network_up.txt
+  args:
+     chdir: $HOME
+     creates: pod_network_setup.txt
+  when: pod_network == "weave"
+
+- name: Get kube config localy.
+  fetch:
+   src: /root/.kube/config
+   dest: /{{  playbook_dir }}/../.admin.conf
+   flat: yes
