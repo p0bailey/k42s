@@ -2,12 +2,29 @@
 # k42s
 <a id="markdown-k42s" name="k42s"></a>
 
->k42s is a full multinode Kubernetes Vagrant stack with a real load balancer.
+>k42s is a full multinode Kubernetes Vagrant cluster with a real load balancer.
 
-## <img src=".img/architecture.png" alt="Kubernetes" width="600"/>
-<a id="markdown-%3Cimg%20src%3D%22.img%2Farchitecture.png%22%20alt%3D%22Kubernetes%22%20width%3D%22600%22%2F%3E" name="%3Cimg%20src%3D%22.img%2Farchitecture.png%22%20alt%3D%22Kubernetes%22%20width%3D%22600%22%2F%3E"></a>
+ <img src=".img/architecture.png" alt="Kubernetes" width="600"/>
+
+--------------------------------
+
+<!-- TOC -->
+
+- [Why “k42s”?](#why-k42s)
+- [What is Kubernetes?](#what-is-kubernetes)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage example](#usage-example)
+    - [Prometheus](#prometheus)
+    - [Hello world](#hello-world)
+- [Release History](#release-history)
+- [Meta](#meta)
+- [Contributing](#contributing)
+
+<!-- /TOC -->
 
 ## Why “k42s”?
+<a id="markdown-Why%20%E2%80%9Ck42s%E2%80%9D%3F" name="Why%20%E2%80%9Ck42s%E2%80%9D%3F"></a>
 
 This project is the result of getting my hands dirty with Kubernetes trying to fulfil my innate curiosity to
 understand how things work in the nitty-gritty details. In the beginning I have started poking around with Minikube, which at that
@@ -23,6 +40,7 @@ world.
 
 
 ## What is Kubernetes?
+<a id="markdown-What%20is%20Kubernetes%3F" name="What%20is%20Kubernetes%3F"></a>
 
 According to the official [website](https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/):
 
@@ -39,6 +57,8 @@ K8 Package management: [Helm](https://helm.sh)
 Load LoadBalancer: [MetalLB](https://metallb.universe.tf/)
 
 Ingress: [Nginx](https://kubernetes.github.io/ingress-nginx/)
+
+Monitoring: 
 
 DNS Resolution: [Nip.io](http://nip.io/)
 
@@ -100,8 +120,22 @@ To get the full path of KUBECONFIG and the environment variable values type and 
 
 `K8CONFIG=$(realpath .admin.conf) | echo export KUBECONFIG=$K8CONFIG`
 
+### Prometheus
+<a id="markdown-Prometheus" name="Prometheus"></a>
+
+`make prometheus_install`
+
+  https://prometheus-192-168-56-240.sslip.io
+
+  https://alertmanager-192-168-56-240.sslip.io
+
+  https://grafana-192-168-56-240.sslip.io 
+
+  Grafana login admin/prom-operator
+
 
 ### Hello world
+<a id="markdown-Hello%20world" name="Hello%20world"></a>
 
 `helm upgrade --install  -f kubernetes/helm/charts/helloworld/values.yaml helloworld ./kubernetes/helm/charts/helloworld`
 
