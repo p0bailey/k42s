@@ -1,0 +1,33 @@
+# apiVersion: networking.istio.io/v1alpha3
+# kind: VirtualService
+# metadata:
+#   name: hello
+#   namespace: istio-system
+# spec:
+#   gateways:
+#     - istio-config-gateway
+#   hosts:
+#     - "helloworld-192-168-56-240.nip.io"
+#   http:
+#     - route:
+#         - destination:
+#             host: helloworld.svc.cluster.local
+#             port:
+#               number: 80
+# ---
+# # # ---
+# apiVersion: networking.istio.io/v1alpha3
+# kind: VirtualService
+# metadata:
+#   name: bookinfo
+# spec:
+#   hosts:
+#     - "helloworld-192-168-56-240.nip.io"
+#   gateways:
+#     - istio-config-gateway
+#   http:
+#      - route:
+#         - destination:
+#             host: helloworld.svc.cluster.local
+#             port:
+#               number: 80              

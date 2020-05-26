@@ -53,3 +53,10 @@ prometheus_install:
 
 prometheus_delete:
 	KUBECONFIG=.admin.conf helm uninstall prometheus -n monitoring|| true
+
+nginx_ingress_install:
+	KUBECONFIG=.admin.conf helm upgrade --install nginx-ingress  stable/nginx-ingress --set rbac.create=true
+
+
+nginx_ingress_delete:
+	KUBECONFIG=.admin.conf helm uninstall nginx-ingress || true
