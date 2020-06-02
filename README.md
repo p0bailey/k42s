@@ -52,7 +52,7 @@ _Kubernetes is a portable, extensible open-source platform for managing containe
 ## Features
 <a id="markdown-Features" name="Features"></a>
 
-Overlay network: [Weave](https://www.weave.works/docs/net/latest/overview/)
+Overlay network: [WeaveNet](https://www.weave.works/docs/net/latest/overview/)
 
 K8 Package management: [Helm](https://helm.sh)
 
