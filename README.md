@@ -38,7 +38,7 @@ world.
 
 
  <img src=".img/warning.png" alt="Kubernetes" width="50"/> This is by no means a Kubernetes production grade setup,
- do not expose ports, services, endpoints to the internet.
+ do not expose ports, services, endpoints to the internet. <img src=".img/warning.png" alt="Kubernetes" width="50"/>
 
 
 ## What is Kubernetes?
@@ -197,6 +197,8 @@ List cluster events in all namespace sorted by creationTimestamp.
 <a id="markdown-Workshops" name="Workshops"></a>
 
 [Loads of self paced workshops to follow along](docs/workshops.md)
+
+
 
 ## Release History
 <a id="markdown-Release%20History" name="Release%20History"></a>
