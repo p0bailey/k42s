@@ -70,7 +70,7 @@ prometheus_install:
 	make status
 
 prometheus_delete:
-	helm uninstall prometheus -n monitoring || true; \
+	helm delete prometheus -n monitoring || true; \
 	kubectl delete ns monitoring
 
 weave_install:
@@ -78,7 +78,7 @@ weave_install:
 	helm upgrade --install   weave-scope --namespace weave-scope stable/weave-scope
 
 weave_delete:
-	helm uninstall weave-scope -n weave-scope || true; \
+	helm delete weave-scope -n weave-scope || true; \
 	kubectl delete ns weave-scope
 
 full:
@@ -101,7 +101,7 @@ demo_1_install:
 
 
 demo_1_delete:
-	helm uninstall demo1 || true; \
+	helm delete  -n demo1 demo1  || true; \
 	kubectl delete namespaces demo1 || true
 
 
