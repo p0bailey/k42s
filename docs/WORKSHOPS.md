@@ -1,6 +1,6 @@
 #WORKSHOPS
 
-Online workshops to follow along.
+Online workshops to follow along at your own pace.
 
 ## Kubernetes 
 
