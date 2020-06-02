@@ -1,0 +1,17 @@
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name:  {{ include "demo1.fullname" . }}
+  namespace: istio-system
+spec:
+  hosts:
+    - {{ .Values.ingressHost }}
+  gateways:
+    - istio-gateway
+  http:
+     - route:
+        - destination:
+            host: {{ include "demo1.fullname" . }}.{{ .Release.Namespace }}.svc.cluster.local
+            port:
+              number: 80 
