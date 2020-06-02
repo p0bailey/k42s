@@ -15,6 +15,7 @@ bootstrap: up  ## Start and provision k42s cluster.
 	kubectl apply -f  kubernetes/manifests/namespaces.yaml; \
 	helm repo add stable https://kubernetes-charts.storage.googleapis.com; \
 	helm   install   metallb -n metallb -f  kubernetes/helm/charts/metallb/values.yaml stable/metallb; \
+	make full; \
 	make status
 
 
