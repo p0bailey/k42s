@@ -191,12 +191,14 @@ List cluster events in all namespace sorted by creationTimestamp.
 ## Advanced Usage
 <a id="markdown-Advanced%20Usage" name="Advanced%20Usage"></a>
 
-[K42s advanced usage](./docs/advanced-usage.md)
+[K42s advanced usage](docs/advanced-usage.md)
 
 ## Workshops
 <a id="markdown-Workshops" name="Workshops"></a>
 
-[Loads of self paced workshops to follow along](./docs/workshops.md)
+[Loads of self paced workshops to follow along](docs/workshops.md)
+
+
 
 ## Release History
 <a id="markdown-Release%20History" name="Release%20History"></a>
