@@ -15,8 +15,10 @@
 - [Features](#features)
 - [Installation](#installation)
 - [Usage example](#usage-example)
-    - [Prometheus](#prometheus)
-    - [Hello world](#hello-world)
+    - [Cluster services](#cluster-services)
+    - [Demo service](#demo-service)
+- [Advanced Usage](#advanced-usage)
+- [Workshops](#workshops)
 - [Release History](#release-history)
 - [Meta](#meta)
 - [Contributing](#contributing)
@@ -50,15 +52,15 @@ _Kubernetes is a portable, extensible open-source platform for managing containe
 ## Features
 <a id="markdown-Features" name="Features"></a>
 
-Pod network: [Weave](https://www.weave.works/docs/net/latest/overview/)
+Overlay network: [Weave](https://www.weave.works/docs/net/latest/overview/)
 
 K8 Package management: [Helm](https://helm.sh)
 
 Load LoadBalancer: [MetalLB](https://metallb.universe.tf/)
 
-Ingress: [Nginx](https://kubernetes.github.io/ingress-nginx/)
+Service mesh: [Istio](https://istio.io)
 
-Monitoring: 
+Monitoring:  [Prometheus - Alert Manager ](https://prometheus.io) - [Grafana](https://grafana.com)
 
 DNS Resolution: [Nip.io](http://nip.io/)
 
@@ -80,11 +82,14 @@ OS X & Linux:
 - Virtualbox - https://www.virtualbox.org
 - Vagrant - https://www.vagrantup.com
 - Heml - https://helm.sh - v3 :)
-- k9s - https://k9ss.io
+- k9s - https://github.com/derailed/k9s
+- DirEnv - https://direnv.net
 
+OSX:  `brew install ansible virtualbox vagrant helm derailed/k9s/k9s direnv kubectl`
 
 **Other useful tools and plugins**
 
+OSX: `brew install stern kubectx derailed/popeye/popeye`
 
 **Setup**
 
@@ -106,59 +111,92 @@ Clone the repo.
 
 `git clone git@github.com:p0bailey/k42s.git`
 
-Cd into k42s and issue.
+Go into k42s directory and run.
+
+`direnv allow`
 
 `make bootstrap`
+
+Those commands would set first a convenient KUBECONFIG env variable and second would bootstrap a full cluster with basic components as Istio, Prometheus, Weave-Scope.
 
 At the end of the cluster bootstrap you must get this output showing 1 master and 2 worker nodes along with several pods.
 
 <img src=".img/status.png" alt="Kubernetes" width="600"/>
 
-At the end to the bootstrap a KUBECONFIG can be found in the repo root directory, at this point you would need to set KUBECONFIG as an environment variable.
-
-To get the full path of KUBECONFIG and the environment variable values type and use it to set your favourite shell ie. .zshrc , .bashrc  
-
-`K8CONFIG=$(realpath .admin.conf) | echo export KUBECONFIG=$K8CONFIG`
-
-### Prometheus
-<a id="markdown-Prometheus" name="Prometheus"></a>
-
-`make prometheus_install`
-
-  https://prometheus-192-168-56-240.sslip.io
-
-  https://alertmanager-192-168-56-240.sslip.io
-
-  https://grafana-192-168-56-240.sslip.io 
-
-  Grafana login admin/prom-operator
 
 
-### Hello world
-<a id="markdown-Hello%20world" name="Hello%20world"></a>
+### Cluster services
+<a id="markdown-Cluster%20services" name="Cluster%20services"></a>
 
-`helm upgrade --install  -f kubernetes/helm/charts/helloworld/values.yaml helloworld ./kubernetes/helm/charts/helloworld`
 
+https://weave.192-168-56-240.nip.io
+
+https://prometheus.192-168-56-240.nip.io
+
+https://alertmanager.192-168-56-240.nip.io
+
+https://grafana.192-168-56-240.nip.io
+
+Grafana login admin/prom-operator
+
+https://kiali.192-168-56-240.nip.io
+
+Kiali login admin/admin
+
+### Demo service
+<a id="markdown-Demo%20service" name="Demo%20service"></a>
+
+This deployment would provide a basic NGINX webserver.
+
+Type: `make demo_1_install`
+
+Expected output.
 ```
-Release "helloworld" has been upgraded. Happy Helming!
-NAME: helloworld
-LAST DEPLOYED: Wed May 20 09:03:17 2020
-NAMESPACE: default
+namespace/demo1 created
+Release "demo1" does not exist. Installing it now.
+NAME: demo1
+LAST DEPLOYED: Tue Jun  2 11:24:43 2020
+NAMESPACE: demo1
 STATUS: deployed
-REVISION: 2
+REVISION: 1
 NOTES:
-1. Get the application URL by running these commands:
-  http://helloworld-192-168-56-240.nip.io/
+1. Get the application URL going to:
+ https://demo1.192-168-56-240.nip.io/
+
 ```
+
 
 <img src=".img/helloworld.png" alt="Kubernetes" width="600"/>
 
+To delete demo 1 service type:
+
+`make demo_1_delete`
+
+Expected output.
+```
+release "demo1" uninstalled
+namespace "demo1" deleted
+```
+
 Useful commands:
+
+List all pods in all namespaces:
 
 `kubectl get pods --all-namespaces`
 
-**Advanced:**
+List cluster events in all namespace sorted by creationTimestamp.
 
+`kubectl get events --all-namespaces --sort-by=.metadata.creationTimestamp`
+
+## Advanced Usage
+<a id="markdown-Advanced%20Usage" name="Advanced%20Usage"></a>
+
+[K42s advanced usage](docs/advanced-usage.md)
+
+## Workshops
+<a id="markdown-Workshops" name="Workshops"></a>
+
+[Loads of self paced workshops to follow along](docs/workshops.md)
 
 ## Release History
 <a id="markdown-Release%20History" name="Release%20History"></a>
