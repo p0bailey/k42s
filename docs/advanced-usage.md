@@ -75,6 +75,7 @@ Prometheus endpoint: https://grafana.192-168-56-240.nip.io
 ### Alertmanager
 <a id="markdown-Alertmanager" name="Alertmanager"></a>
 The Alertmanager handles alerts sent by client applications such as the Prometheus server. - https://prometheus.io/docs/alerting/alertmanager/
+
 <img src=".img/alertmanager.png" alt="alertmanager" width="600"/>
 
 To access Alertmanager open the endpoint in your browser. Expect and accept the self signed SSL/TLS invalid cert.
